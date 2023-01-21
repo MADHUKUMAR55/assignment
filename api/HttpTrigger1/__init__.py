@@ -9,7 +9,7 @@ import azure.functions as func
 def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
         ENV = req.params.get('ENV')
-        conn_str = os.environ[f'CONN_STR_{ENV}'] # Add postgres connection string to env variable CONN_STR_DEV
+        conn_str = os.environ[f'CONN_STR_{ENV}'] 
         engine = create_engine(conn_str, echo=False)
         engine.connect()
         sql = f'''select * from employees;'''
